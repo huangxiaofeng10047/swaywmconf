@@ -11,53 +11,39 @@
 
 ### 变量
 #
-# 使用徽标键作为修饰键,Alt 建为Mod1 win 对应Mod4
-set $mod Mod1
+# 使用徽标键作为修饰键
+set $mod Mod4
 # Vim 风格的方向键
 set $left h
 set $down j
 set $up k
 set $right l
 # 首选终端模拟器
-set $term urxvtc
-set $firefox firefox
+set $term alacritty
 # 首选应用启动器
-set $menu rofi -show  drun -theme Arc-Dark -font "JetBrainsMono Nerd Font 18"| xargs swaymsg exec --
-#set $menu rofi -show run -theme solarized -show-icons
+set $menu rofi -show run -theme solarized -show-icons
 # GNOME 界面
 set $gnome-schema org.gnome.desktop.interface
-set $wallpaper /home/xfhuang/images/sindo.jpg
-# set $WAYLAND_777777777 wayland-0
- xwayland enable
- #for_window [shell="xwayland"] title_format "[XWayland] %title"
-# let title bar friendly with chinese
-for_window [title=".*"] title_format ゜%title゜
-title_align center
+
 ### 显示输出配置
 #
 # 设置壁纸
-output * bg /home/xfhuang/images/sindo.jpg fill
-# output WL-1 resolution 1920x1032 position 0,0 background $wallpaper fill
-
-# 公式では非推奨
+output * bg /home/xfhuang/img/Avatar.png fill
 # 显示器
 # 通过运行 `swaymsg -t get_outputs` 可以获得显示器名称
-
 # 笔记本自带显示器
+output eDP-1 pos 0,0 res 1920x1080
 # 外置显示器
-Output  'Unknown Unknown Unknown' {
-    scale 1
-    resolution 1920x1032
-    pos 0 0
-} 
+output DP-1 pos 1920,0 res 1440x900
+
 ### 空闲配置
 #
 # 未活动 300 秒后锁屏，再 300 秒后关闭显示
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
 
 ### 输入配置
 #
@@ -70,11 +56,11 @@ input 1739:30382:DLL0704:01_06CB:76AE_Touchpad {
     middle_emulation enabled
 }
 # 键盘配置，交换 Ctrl 和大写键
- input * {
-     xkb_layout "us"
-     xkb_options "ctrl:swapcaps"
- }
-
+input * {
+    xkb_layout "us"
+    xkb_options "ctrl:swapcaps"
+}
+## xwayland disable
 ### 按键绑定
 #
 # 基本：
@@ -83,11 +69,10 @@ input 1739:30382:DLL0704:01_06CB:76AE_Touchpad {
     bindsym $mod+Return exec $term
 
     # 关闭聚焦的窗口
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
 
     # 运行启动器
     bindsym $mod+d exec $menu
-    bindsym $mod+o exec $firefox
 
     # 按修饰键和鼠标左键：拖动浮动窗口
     # 按修饰键和鼠标右键：调整窗口大小
@@ -218,7 +203,7 @@ bindsym $mod+n resize set 1280 720
 # 其它：
 #
 # 锁屏
-# bindsym $mod+c exec "swaylock -f -c 000000"
+bindsym $mod+c exec "swaylock -f -c 000000"
 # 启动 tmux
 bindsym $mod+t exec "urxvtc -e sh -c tmuxen"
 # 截图
@@ -246,9 +231,8 @@ bar {
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Dracula'
     gsettings set $gnome-schema icon-theme 'Dracula'
-    gsettings set $gnome-schema cursor-theme 'Neutral_Plus'
-    gsettings set $gnome-schema font-name 'MesloLGS NF 9'
-    gsettings set $gnome-schema monospace-font-name 'MesloLGS NF 9'
+    gsettings set $gnome-schema font-name 'FiraGO 9'
+    gsettings set $gnome-schema monospace-font-name 'Fira Code 11'
 }
 # 边框设置
 default_border pixel 2
@@ -265,13 +249,9 @@ seat * hide_cursor 5000
 # 输入法
 exec fcitx5
 # 终端
+exec alacritty 
 # 通知 (https://github.com/emersion/mako)
 exec mako
-exec urxvtd -q -f -o
-  set  $SDL_VIDEODRIVER 'wayland-0'
-  exec_always fcitx5 -d --replace
+
 # 导入配置片断
 include /etc/sway/config.d/*
-# make waybar start immediately
-exec hash dbus-update-activation-environment 2>/dev/null && \
-    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK

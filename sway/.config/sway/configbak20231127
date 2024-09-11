@@ -11,7 +11,7 @@
 
 ### 变量
 #
-# 使用徽标键作为修饰键,Alt 建为Mod1 win 对应Mod4
+# 使用徽标键作为修饰键
 set $mod Mod1
 # Vim 风格的方向键
 set $left h
@@ -19,37 +19,28 @@ set $down j
 set $up k
 set $right l
 # 首选终端模拟器
-set $term urxvtc
+set $term kitty
 set $firefox firefox
 # 首选应用启动器
 set $menu rofi -show  drun -theme Arc-Dark -font "JetBrainsMono Nerd Font 18"| xargs swaymsg exec --
-#set $menu rofi -show run -theme solarized -show-icons
+
 # GNOME 界面
 set $gnome-schema org.gnome.desktop.interface
-set $wallpaper /home/xfhuang/images/sindo.jpg
-# set $WAYLAND_777777777 wayland-0
- xwayland enable
- #for_window [shell="xwayland"] title_format "[XWayland] %title"
-# let title bar friendly with chinese
-for_window [title=".*"] title_format ゜%title゜
-title_align center
+
+set $WAYLAND_DISPLAY wayland-0
+xwayland enable
+# for_window [shell="xwayland"] title_format "[XWayland] %title"
+
 ### 显示输出配置
 #
 # 设置壁纸
-output * bg /home/xfhuang/images/sindo.jpg fill
-# output WL-1 resolution 1920x1032 position 0,0 background $wallpaper fill
-
+output * bg /home/xfhuang/img/Avatar.png fill
 # 公式では非推奨
 # 显示器
 # 通过运行 `swaymsg -t get_outputs` 可以获得显示器名称
-
 # 笔记本自带显示器
 # 外置显示器
-Output  'Unknown Unknown Unknown' {
-    scale 1
-    resolution 1920x1032
-    pos 0 0
-} 
+
 ### 空闲配置
 #
 # 未活动 300 秒后锁屏，再 300 秒后关闭显示
@@ -64,16 +55,16 @@ Output  'Unknown Unknown Unknown' {
 # 通过运行 `swaymsg -t get_inputs` 可以获得输入名称
 # 阅读 `man 5 sway-input` 了解详情
 # 笔记本触摸板配置
-input 1739:30382:DLL0704:01_06CB:76AE_Touchpad {
-    tap enabled
-    natural_scroll enabled
-    middle_emulation enabled
-}
+#input 1739:30382:DLL0704:01_06CB:76AE_Touchpad {
+#    tap enabled
+#    natural_scroll enabled
+#    middle_emulation enabled
+#}
 # 键盘配置，交换 Ctrl 和大写键
- input * {
-     xkb_layout "us"
-     xkb_options "ctrl:swapcaps"
- }
+# input * {
+#     xkb_layout "us"
+#     xkb_options "ctrl:swapcaps"
+# }
 
 ### 按键绑定
 #
@@ -218,7 +209,7 @@ bindsym $mod+n resize set 1280 720
 # 其它：
 #
 # 锁屏
-# bindsym $mod+c exec "swaylock -f -c 000000"
+bindsym $mod+c exec "swaylock -f -c 000000"
 # 启动 tmux
 bindsym $mod+t exec "urxvtc -e sh -c tmuxen"
 # 截图
@@ -263,15 +254,12 @@ seat * hide_cursor 5000
 # 自动启动程序：
 #
 # 输入法
-exec fcitx5
+# exec fcitx5
 # 终端
+#exec kitty 
 # 通知 (https://github.com/emersion/mako)
-exec mako
-exec urxvtd -q -f -o
+# exec mako
   set  $SDL_VIDEODRIVER 'wayland-0'
   exec_always fcitx5 -d --replace
 # 导入配置片断
 include /etc/sway/config.d/*
-# make waybar start immediately
-exec hash dbus-update-activation-environment 2>/dev/null && \
-    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK

@@ -6,6 +6,8 @@
 !-- colorscheme & font --!
 #include ".Xdefaults.d/colors/solarized_dark"
 #include ".Xdefaults.d/fonts/operator_sourcehan"
+URxvt.font:xft:Hack:style=Regular:antialias=True:pixelsize=23
+URxvt.boldFont:xft:Hack:style=Bold:antialias=True:pixelsize=23
 
 !-- xft --!
 ! hintstyle : hintnone | hintslight | hintmedium | hintfull
