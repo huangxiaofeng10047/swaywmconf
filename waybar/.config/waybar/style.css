@@ -1,202 +1,163 @@
 * {
     border: none;
-    border-radius: 0;
-    font-family: "FiraGO Medium", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: Firacode Nerd Font;
+    font-size: 24px;
     min-height: 0;
-}
-
-window#waybar {
-    background: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
-}
-
-window#waybar.hidded {
-    opacity: 0.2;
-}
-
-/*
-window#waybar.empty {
-    background: transparent;
-}
-window#waybar.solo {
-    background: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #DEE1E6;
-    color: #000000;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button {
-    padding: 0 5px;
-    background: transparent;
-    color: #ffffff;
-    border-bottom: 3px solid transparent;
-}
-
-#workspaces button.focused {
-    background: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
-
-#workspaces button.urgent {
-    background-color: #eb4d4b;
-}
-
-#mode {
-    background: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#custom-download,
-#custom-weather {
+  }
+  
+  window#waybar {
+    background: #3b4252;
+    background: #212124;
+    /* background: #002b36; */
+    color: white;
+    opacity: 1;
+  }
+  
+  #workspaces {
+    background-color: #373737;
+    background: #212124;
+    color: white;
+    margin: 0px;
+    margin-left: 10px;
+    border-radius: 0px;
+  }
+  #workspaces button {
     padding: 0 10px;
-    margin: 0 5px;
+    color: white;
+    min-width: 50px;
+    /* border-top: 1px solid #212124; */
+    border-bottom: 2px solid #212124;
+    /* border-left: 1px solid #212124; */
+    /* border-right: 1px solid #212124; */
+  }
+  
+  #workspaces button.focused {
+    color: #7aa2f7;
+    border-radius: 1px;
+    /* border-top: 1px solid #7aa2f7; */
+    border-bottom: 2px solid #7aa2f7;
+    /* border-left: 1px solid #7aa2f7; */
+    /* border-right: 1px solid #7aa2f7; */
+  }
+  
+  #workspaces button.active {
+    color: #7aa2f7;
+    border-radius: 1px;
+    /* border-top: 1px solid #7aa2f7; */
+    border-bottom: 2px solid #7dcfff;
+    /* border-left: 1px solid #7aa2f7; */
+    /* border-right: 1px solid #7aa2f7; */
+  }
+  #workspaces button:hover {
+    color: white;
+    background: #373737;
+    border-radius: 0px;
+  }
+  
+  
+  #custom-gpu-usage, #custom-date, #battery, #pulseaudio, #network, #temperature,#cpu,#memory, #bluetooth, #custom-books, #custom-ML,#custom-forest-coin, #custom-forest, #custom-todo{
+    /*background-color: #4c566a;*/
+    background-color: #373737;
+    background: #212124;
+    padding: 0px 10px;
+    margin: 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+  }
+  
+  #clock {
+    background-color: #373737;
+    background: #212124;
+    padding: 0px 10px;
+    margin: 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+  }
+  
+  #custom-date {
+    color: #8fbcbb;
+  }
+  
+  
+  #clock {
     color: #ffffff;
-}
-
-#clock {
-    background-color: #64727D;
-}
-
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-#battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-@keyframes blink {
+    /* border-radius: 0px 10px 10px 0px; */
+  }
+  
+  #battery {
+    color: #a3be8c;
+    /* border-radius: 10px 0px 0px 10px; */
+  }
+  
+  #custom-gpu-usage {
+    color: #FF69B4;
+  }
+  
+  @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+      background-color: #ffffff;
+      color: black;
     }
-}
-
-#battery.critical:not(.charging) {
-    background: #f53c3c;
+  }
+  
+  #battery.charging {
+    color: #a3be8c;
+  }
+  
+  #battery.critical:not(.charging) {
+    background-color: #f53c3c;
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-}
-
-label:focus {
-    background-color: #000000;
-}
-
-#cpu {
-    background: #2ecc71;
-    color: #000000;
-}
-
-#memory {
-    background: #9b59b6;
-}
-
-#backlight {
-    background: #90b1b1;
-}
-
-#network {
-    background: #2980b9;
-}
-
-#network.disconnected {
-    background: #f53c3c;
-}
-
-#pulseaudio {
-    background: #f1c40f;
-    color: #000000;
-}
-
-#pulseaudio.muted {
-    background: #90b1b1;
-    color: #2a5c45;
-}
-
-#custom-media {
-    background: #66cc99;
-    color: #2a5c45;
-}
-
-#custom-download {
-    background: #66cc99;
-    color: #2a5c45;
-}
-
-#custom-weather {
-    background: #90b1b1;
-}
-
-.custom-spotify {
-    background: #66cc99;
-}
-
-.custom-vlc {
-    background: #ffa000;
-}
-
-#temperature {
-    background: #f0932b;
-}
-
-#temperature.critical {
-    background: #eb4d4b;
-}
-
-#tray {
-    background-color: #2980b9;
-}
-
-#idle_inhibitor {
-    background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
-#mpd {
-    background: #66cc99;
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background: #f53c3c;
-}
-
-#mpd.stopped {
-    background: #90b1b1;
-}
-
-#mpd.paused {
-    background: #51a37a;
-}
+  }
+  
+  #network {
+    color: #2aa198;
+    /* border-radius: 0px 10px 10px 0px; */
+  }
+  
+  #memory {
+    color: #2aa000;
+  }
+  
+  #memory.critical {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  #temperature {
+    color: #d08770;
+  }
+  
+  #pulseaudio {
+    color: #ebcb8b;
+  }
+  
+  #bluetooth {
+    color: #268bd2;
+  }
+  
+  #custom-books {
+    color: #ffffff;
+  }
+  
+  #custom-todo {
+    color: #7AA2F7;
+    /* border-radius: 10px 0px 0px 10px; */
+  }
+  
+  #custom-forest-coin {
+    color: #00FFFF;
+  }
+  
+  #custom-forest {
+    color: #00FA9A;
+    border-radius: 10px 0px 0px 10px;
+  }
+  
