@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     // "modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "custom/weather", "pulseaudio", "custom/download", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "custom/weather",  "network", "cpu", "memory", "temperature", "backlight",  "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -90,7 +90,7 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "interface": "eth1", // (Optional) To force the use of this interface
+        // "interface": "eth1", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-disconnected": "Disconnected ⚠"
@@ -121,6 +121,6 @@
         "format": "{}",
         "interval": 60,
         "escape": true,
-        "exec": "curl -Ss 'https://wttr.in/Chengdu?0&T&Q&format=1'"
+        "exec": "curl -Ss 'https://wttr.in/Nanjin?0&T&Q&format=1'"
     }
 }
